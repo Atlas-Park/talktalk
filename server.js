@@ -61,6 +61,8 @@ const presentComment = comment => {
 
 // 정적 파일 서빙 (프론트엔드)
 app.use(express.static(path.join(__dirname, 'dist')));
+// Vercel의 /dist/* rewrite 경로도 동일한 정적 디렉터리로 연결
+app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 /* =========================================================
    게시글 (Posts) API
