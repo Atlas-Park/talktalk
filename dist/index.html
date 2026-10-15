@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="브라우저에 안전하게 저장되는 간단한 게시판">
-  <title>담벼락 — 나만의 게시판</title>
+  <meta name="description" content="클라우드에 안전하게 보존되는 담벼락 게시판">
+  <title>담벼락 — 생각을 나누는 게시판</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,9 +21,9 @@
 
   <main class="page-shell">
     <section class="intro" aria-labelledby="pageTitle">
-      <p class="eyebrow">MY LITTLE BOARD</p>
+      <p class="eyebrow">COMMUNITY BOARD</p>
       <h1 id="pageTitle">오늘의 이야기를<br><em>남겨보세요.</em></h1>
-      <p>여기에 쓴 글은 이 브라우저에만 저장돼요.<br>부담 없이 쓰고, 언제든 다시 고쳐보세요.</p>
+      <p>자유롭게 생각을 나누고 댓글로 소통해 보세요.<br>모든 글과 댓글은 클라우드에 안전하게 보존돼요.</p>
     </section>
 
     <section class="board" aria-label="게시판">
@@ -32,6 +32,11 @@
           <div><span class="section-number">01</span><h2>게시글</h2></div>
           <span class="post-count" id="postCount">0개의 글</span>
         </div>
+        <div class="search-box">
+          <svg class="search-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchInput" placeholder="제목이나 본문 검색..." aria-label="게시글 검색">
+          <button type="button" id="clearSearchButton" class="clear-search-btn" aria-label="검색 초기화" style="display:none;">×</button>
+        </div>
         <div class="post-list" id="postList"></div>
       </div>
 
@@ -39,7 +44,7 @@
     </section>
   </main>
 
-  <footer><span>담벼락</span><p>모든 기록은 당신의 브라우저 안에 머뭅니다.</p></footer>
+  <footer><span>담벼락</span><p>모든 기록은 클라우드에 안전하게 보존됩니다.</p></footer>
 
   <dialog id="postDialog" aria-labelledby="dialogTitle">
     <form id="postForm">
@@ -50,6 +55,7 @@
       <input type="hidden" id="postId">
       <label>제목<input id="titleInput" type="text" maxlength="80" placeholder="어떤 이야기를 남길까요?" required></label>
       <label>작성자<input id="authorInput" type="text" maxlength="24" placeholder="이름을 입력해 주세요" required></label>
+      <label>비밀번호<input id="passwordInput" type="password" minlength="4" maxlength="64" autocomplete="new-password" placeholder="수정·삭제할 때 사용할 비밀번호" required></label>
       <label>본문<textarea id="contentInput" rows="8" maxlength="5000" placeholder="당신의 이야기를 들려주세요." required></textarea></label>
       <div class="form-actions"><button class="text-button" id="cancelButton" type="button">취소</button><button class="primary-button" type="submit">저장하기</button></div>
     </form>
@@ -59,8 +65,9 @@
     <form method="dialog">
       <span class="confirm-icon" aria-hidden="true">!</span>
       <h2 id="confirmTitle">글을 삭제할까요?</h2>
-      <p>삭제한 글은 다시 되돌릴 수 없어요.</p>
-      <div class="form-actions"><button class="text-button" value="cancel">취소</button><button class="danger-button" id="confirmDeleteButton" value="confirm">삭제하기</button></div>
+      <p>삭제한 글과 작성된 모든 댓글은 다시 되돌릴 수 없어요.</p>
+      <label class="confirm-password">비밀번호<input id="deletePasswordInput" type="password" minlength="4" maxlength="64" autocomplete="current-password" required></label>
+      <div class="form-actions"><button class="text-button" value="cancel" formnovalidate>취소</button><button class="danger-button" id="confirmDeleteButton" value="confirm">삭제하기</button></div>
     </form>
   </dialog>
 
