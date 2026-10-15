@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="클라우드에 안전하게 보존되는 담벼락 게시판">
-  <title>담벼락 — 생각을 나누는 게시판</title>
+  <meta name="description" content="익명으로 자유롭게 이야기를 나누는 대나무숲 게시판">
+  <title>대나무숲 - 익명 게시판</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,29 +12,33 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#" aria-label="담벼락 홈">
-      <span class="brand-mark" aria-hidden="true">담</span>
-      <span><strong>담벼락</strong><small>생각을 가볍게 붙여두는 곳</small></span>
-    </a>
-    <button class="primary-button" id="newPostButton" type="button"><span aria-hidden="true">＋</span> 새 글 쓰기</button>
+    <div class="header-inner">
+      <a class="brand" href="#" aria-label="대나무숲 홈">
+        <span class="brand-mark" aria-hidden="true">竹</span>
+        <span><strong>대나무숲</strong><small>익명 자유게시판</small></span>
+      </a>
+      <nav aria-label="주 메뉴"><a href="#board">게시판</a><a href="#footer">이용안내</a></nav>
+    </div>
   </header>
 
   <main class="page-shell">
-    <section class="intro" aria-labelledby="pageTitle">
-      <p class="eyebrow">COMMUNITY BOARD</p>
-      <h1 id="pageTitle">오늘의 이야기를<br><em>남겨보세요.</em></h1>
-      <p>자유롭게 생각을 나누고 댓글로 소통해 보세요.<br>모든 글과 댓글은 클라우드에 안전하게 보존돼요.</p>
+    <section class="board-title" aria-labelledby="pageTitle">
+      <div>
+        <h1 id="pageTitle">대나무숲</h1>
+        <p>하고 싶었던 이야기를 자유롭게 남겨주세요.</p>
+      </div>
+      <button class="primary-button" id="newPostButton" type="button">글쓰기</button>
     </section>
 
-    <section class="board" aria-label="게시판">
+    <section class="board" id="board" aria-label="게시판">
       <div class="list-panel">
         <div class="panel-heading">
-          <div><span class="section-number">01</span><h2>게시글</h2></div>
+          <h2>전체글</h2>
           <span class="post-count" id="postCount">0개의 글</span>
         </div>
         <div class="search-box">
           <svg class="search-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="searchInput" placeholder="제목이나 본문 검색..." aria-label="게시글 검색">
+          <input type="text" id="searchInput" placeholder="제목 + 내용 검색" aria-label="게시글 검색">
           <button type="button" id="clearSearchButton" class="clear-search-btn" aria-label="검색 초기화" style="display:none;">×</button>
         </div>
         <div class="post-list" id="postList"></div>
@@ -44,12 +48,12 @@
     </section>
   </main>
 
-  <footer><span>담벼락</span><p>모든 기록은 클라우드에 안전하게 보존됩니다.</p></footer>
+  <footer id="footer"><span>대나무숲</span><p>비밀번호는 글과 댓글을 수정·삭제할 때 필요합니다.</p></footer>
 
   <dialog id="postDialog" aria-labelledby="dialogTitle">
     <form id="postForm">
       <div class="dialog-heading">
-        <div><p class="eyebrow">WRITE A NOTE</p><h2 id="dialogTitle">새 글 쓰기</h2></div>
+        <div><p class="dialog-kicker">대나무숲</p><h2 id="dialogTitle">새 글 쓰기</h2></div>
         <button class="icon-button" id="closeDialogButton" type="button" aria-label="닫기">×</button>
       </div>
       <input type="hidden" id="postId">

@@ -52,7 +52,7 @@ if (DATABASE_URL && DATABASE_URL.trim() !== '') {
           await sql`
             INSERT INTO posts (id, title, author, content, "createdAt", "updatedAt")
             VALUES
-              ('1', '담벼락에 오신 것을 환영합니다', '운영자', 'Neon Serverless Postgres와 연동된 담벼락 게시판입니다.\nVercel에 배포해도 모든 사용자의 글과 댓글이 안전하게 저장됩니다.', ${now}, ${now}),
+              ('1', '대나무숲에 오신 것을 환영합니다', '운영자', '익명으로 자유롭게 이야기를 나누는 대나무숲 게시판입니다.\n글과 댓글은 클라우드 데이터베이스에 안전하게 저장됩니다.', ${now}, ${now}),
               ('2', 'Neon Postgres 연결 완료', '개발자', '클라우드 데이터베이스인 Neon을 연결하여 다중 사용자 환경과 Vercel 배포 준비를 마쳤습니다.', ${now}, ${now});
           `;
           await sql`

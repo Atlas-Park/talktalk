@@ -163,12 +163,10 @@ function renderList() {
 
     return `
       <button class="post-item ${post.id === state.selectedId ? 'active' : ''}" data-id="${escapeAttribute(post.id)}" type="button">
-        <h3>${escapeHtml(post.title)}</h3>
-        <div class="post-meta">
-          <span>${escapeHtml(post.author)}</span>
-          <span>${formatDate(post.createdAt || post.updatedAt)}</span>
-          ${commentBadgeHtml}
-        </div>
+        <span class="post-number">${state.posts.length - state.posts.indexOf(post)}</span>
+        <span class="post-subject"><strong>${escapeHtml(post.title)}</strong>${commentBadgeHtml}</span>
+        <span class="post-author">${escapeHtml(post.author)}</span>
+        <span class="post-date">${formatDate(post.createdAt || post.updatedAt)}</span>
       </button>
     `;
   }).join('');
@@ -207,7 +205,7 @@ function renderDetail() {
       `).join('');
 
   detailPanel.innerHTML = `
-    <span class="detail-label">POST DETAIL</span>
+    <span class="detail-label">게시글</span>
     <h2>${escapeHtml(post.title)}</h2>
     <div class="detail-meta">
       <strong>${escapeHtml(post.author)}</strong>
@@ -222,7 +220,7 @@ function renderDetail() {
 
     <section class="comments-section" aria-label="댓글 영역">
       <div class="comments-header">
-        <div><span class="section-number">02</span><h3>댓글</h3></div>
+        <div><h3>댓글</h3></div>
         <span class="comments-count">${state.comments.length}개의 댓글</span>
       </div>
       <div class="comments-list" id="commentsList">
@@ -230,8 +228,7 @@ function renderDetail() {
       </div>
       <form class="comment-form" id="commentForm">
         <div class="comment-form-heading">
-          <span class="eyebrow">LEAVE A NOTE</span>
-          <span>댓글 남기기</span>
+          <span>댓글 쓰기</span>
         </div>
         <div class="comment-form-author">
           <input type="text" id="commentAuthorInput" placeholder="이름을 입력해 주세요" maxlength="20" required>
